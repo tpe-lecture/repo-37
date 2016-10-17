@@ -1,16 +1,28 @@
-// TODO: JavaDoc
+/**
+ * Represents a currency.
+ * @author Christopher Rotter
+ *
+ */
 public class Waehrung {
 
-    // TODO: JavaDoc
+    /**
+     * Integer value of the exchange course to US-dollar.
+     */
     private final int kurs;
 
-    // TODO: JavaDoc
+    /**
+     * Name of the currency.
+     */
     private final String name;
 
-    // TODO: JavaDoc
+    /**
+     * Short name of the currency.
+     */
     private final String kuerzel;
 
-    // TODO: JavaDoc
+    /**
+     * ???
+     */
     private static final long TEILER = 10000;
 
     /**
@@ -26,22 +38,33 @@ public class Waehrung {
         this.kuerzel = kuerzel;
     }
 
-    // TODO: JavaDoc
+    /**
+     * Converts a value in this currency to another currency.
+     * @param betrag    The value to be converted.
+     * @param toWaehrung    The currency type of the output.
+     * @return  The converted value in the given currency.
+     */
     public long umrechnen(long betrag, Waehrung toWaehrung) {
         return betrag * kurs / toWaehrung.kurs;
     }
 
-    // TODO: JavaDoc
+    /**
+     * @return  The exchange course of this currency.
+     */
     public int getKurs() {
         return kurs;
     }
     
-    // TODO: JavaDoc
+    /**
+     * @return  The name of this currency.
+     */
     public String getName() {
         return name;
     }
 
-    // TODO: JavaDoc
+    /**
+     * @return  The short name of this currency.
+     */
     public String getKuerzel() {
         return kuerzel;
     }
