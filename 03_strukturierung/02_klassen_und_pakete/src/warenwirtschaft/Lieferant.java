@@ -1,4 +1,5 @@
-
+package warenwirtschaft;
+import buchhaltung.Adresse;
 
 /**
  * Lieferant.
