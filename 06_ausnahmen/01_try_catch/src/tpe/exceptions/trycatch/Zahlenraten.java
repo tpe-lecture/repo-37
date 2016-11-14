@@ -14,33 +14,53 @@ public final class Zahlenraten {
      * Liest einen String von der Tastatur.
      *
      * @return der gelesene String
-     * @throws IOException Probleme mit der Console
      */
-    private static String readNumber() throws IOException {
+    private static String readNumber() {
         BufferedReader br = new BufferedReader(
                 new InputStreamReader(System.in));
-        String input = br.readLine();
+
+        String input = "";
+
+        try
+        {
+            input = br.readLine();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
         return input;
     }
 
     /**
      * Hauptmethode.
      *
-     * @param args Kommandozeilenargumente
-     * @throws NumberFormatException Fehler bei der Zahlenkovertierung
-     * @throws IOException I/O-Fehler
+     * @param args Kommandozeilenargumentes
      */
-    public static void main(String[] args)
-            throws NumberFormatException, IOException {
+    public static void main(String[] args) {
 
         // zu ratende Zahl bestimmen
         int zahl = new Random().nextInt(100) + 1;
 
         int versuche = 0;
+        int geraten;
 
         while (true) {
             System.out.print("Bitte geben Sie eine Zahl ein: ");
-            int geraten  = Integer.parseInt(readNumber());
+
+            while (true)
+            {
+                try
+                {
+                    geraten  = Integer.parseInt(readNumber());
+                    break;
+                }
+                catch (NumberFormatException e)
+                {
+                    System.out.println("Ungültige Eingabe! Bitte eine Integer-Zahl eingeben:");
+                }
+            }
+
             versuche++;
 
             if (geraten < zahl) {
