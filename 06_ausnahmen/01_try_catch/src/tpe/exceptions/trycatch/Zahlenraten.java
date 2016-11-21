@@ -35,7 +35,7 @@ public final class Zahlenraten {
     /**
      * Hauptmethode.
      *
-     * @param args Kommandozeilenargumentes
+     * @param args Kommandozeilenargumente
      */
     public static void main(String[] args) {
 
