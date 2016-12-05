@@ -1,261 +1,71 @@
 package tpe.testate.crypter;
 
+/**
+ * Implements the Interface Crypter and can be used to encrypt and decrypt strings.
+ * @author Christopher
+ *
+ */
 public class CrypterImpl implements Crypter
 {
+	private final String clear = "abcdefghijklmnopqrstuvwxyz0123456789 ";
+	private final String cypher = "4bcd3fghijk1mn0pqrs7uvwxyzol2ea56t89 ";
 
+
+	/**
+	 * @see Crypter
+	 */
 	@Override
 	public String encrypt(String input)
 	{
 		input = input.toLowerCase();
-
-		String code = "";
-
-		for (int i = 0; i < input.length(); i++)
-		{
-			switch(input.charAt(i))
-			{
-			case 'a':
-				code += '4';
-				break;
-			case 'b':
-				code += input.charAt(i);
-				break;
-			case 'c':
-				code += input.charAt(i);
-				break;
-			case 'd':
-				code += input.charAt(i);
-				break;
-			case 'e':
-				code += '3';
-				break;
-			case 'f':
-				code += input.charAt(i);
-				break;
-			case 'g':
-				code += input.charAt(i);
-				break;
-			case 'h':
-				code += input.charAt(i);
-				break;
-			case 'i':
-				code += input.charAt(i);
-				break;
-			case 'j':
-				code += input.charAt(i);
-				break;
-			case 'k':
-				code += input.charAt(i);
-				break;
-			case 'l':
-				code += '1';
-				break;
-			case 'm':
-				code += input.charAt(i);
-				break;
-			case 'n':
-				code += input.charAt(i);
-				break;
-			case 'o':
-				code += '0';
-				break;
-			case 'p':
-				code += input.charAt(i);
-				break;
-			case 'q':
-				code += input.charAt(i);
-				break;
-			case 'r':
-				code += input.charAt(i);
-				break;
-			case 's':
-				code += input.charAt(i);
-				break;
-			case 't':
-				code += '7';
-				break;
-			case 'u':
-				code += input.charAt(i);
-				break;
-			case 'v':
-				code += input.charAt(i);
-				break;
-			case 'w':
-				code += input.charAt(i);
-				break;
-			case 'x':
-				code += input.charAt(i);
-				break;
-			case 'y':
-				code += input.charAt(i);
-				break;
-			case 'z':
-				code += input.charAt(i);
-				break;
-			case '0':
-				code += 'o';
-				break;
-			case '1':
-				code += 'l';
-				break;
-			case '2':
-				code += input.charAt(i);
-				break;
-			case '3':
-				code += 'e';
-				break;
-			case '4':
-				code += 'a';
-				break;
-			case '5':
-				code += input.charAt(i);
-				break;
-			case '6':
-				code += input.charAt(i);
-				break;
-			case '7':
-				code += 't';
-				break;
-			case '8':
-				code += input.charAt(i);
-				break;
-			case '9':
-				code += input.charAt(i);
-				break;
-			case ' ':
-				code += input.charAt(i);
-			}
-		}
-
-		return code;
+		return crypt(input, clear, cypher);
 	}
 
+	/**
+	 * @see Crypter
+	 */
 	@Override
 	public String decrypt(String input) throws IllegalArgumentException
+	{
+		String invalid = input;
+
+		for (int i = 0; i < cypher.length(); i++)
+		{
+			invalid = invalid.replaceAll(Character.toString(cypher.charAt(i)), "");
+		}
+
+		if (input.equals(input.toLowerCase()) && invalid.equals(""))
+		{
+			return crypt(input, cypher, clear);
+		}
+		else
+		{
+			throw new IllegalArgumentException();
+		}
+	}
+
+	/**
+	 * Internal helper method to encrypt and decrypt strings.
+	 * @param input A string that will be encrypted or decrypted.
+	 * @param inputChars A string that represents all valid symbols of the input.
+	 * @param outputChars A string that represents the crypted version of inputChars.
+	 * @return The encrypted or decrypted string.
+	 */
+	private String crypt(String input, String inputChars, String outputChars)
 	{
 		String code = "";
 
 		for (int i = 0; i < input.length(); i++)
 		{
-			switch(input.charAt(i))
+			for (int j = 0; j < cypher.length(); j++)
 			{
-			case 'a':
-				code += '4';
-				break;
-			case 'b':
-				code += input.charAt(i);
-				break;
-			case 'c':
-				code += input.charAt(i);
-				break;
-			case 'd':
-				code += input.charAt(i);
-				break;
-			case 'e':
-				code += '3';
-				break;
-			case 'f':
-				code += input.charAt(i);
-				break;
-			case 'g':
-				code += input.charAt(i);
-				break;
-			case 'h':
-				code += input.charAt(i);
-				break;
-			case 'i':
-				code += input.charAt(i);
-				break;
-			case 'j':
-				code += input.charAt(i);
-				break;
-			case 'k':
-				code += input.charAt(i);
-				break;
-			case 'l':
-				code += '1';
-				break;
-			case 'm':
-				code += input.charAt(i);
-				break;
-			case 'n':
-				code += input.charAt(i);
-				break;
-			case 'o':
-				code += '0';
-				break;
-			case 'p':
-				code += input.charAt(i);
-				break;
-			case 'q':
-				code += input.charAt(i);
-				break;
-			case 'r':
-				code += input.charAt(i);
-				break;
-			case 's':
-				code += input.charAt(i);
-				break;
-			case 't':
-				code += '7';
-				break;
-			case 'u':
-				code += input.charAt(i);
-				break;
-			case 'v':
-				code += input.charAt(i);
-				break;
-			case 'w':
-				code += input.charAt(i);
-				break;
-			case 'x':
-				code += input.charAt(i);
-				break;
-			case 'y':
-				code += input.charAt(i);
-				break;
-			case 'z':
-				code += input.charAt(i);
-				break;
-			case '0':
-				code += 'o';
-				break;
-			case '1':
-				code += 'l';
-				break;
-			case '2':
-				code += input.charAt(i);
-				break;
-			case '3':
-				code += 'e';
-				break;
-			case '4':
-				code += 'a';
-				break;
-			case '5':
-				code += input.charAt(i);
-				break;
-			case '6':
-				code += input.charAt(i);
-				break;
-			case '7':
-				code += 't';
-				break;
-			case '8':
-				code += input.charAt(i);
-				break;
-			case '9':
-				code += input.charAt(i);
-				break;
-			case ' ':
-				code += input.charAt(i);
-				break;
-			default:
-				throw new IllegalArgumentException();
+				if (input.charAt(i) == clear.charAt(j))
+				{
+					code += cypher.charAt(j);
+				}
 			}
 		}
 
 		return code;
 	}
-
 }
